@@ -8,6 +8,7 @@ function encode(t,k = secret){
 function decode(s,k = secret) {
   return decodeURIComponent(escape([...atob(s)].map((c,i)=>String.fromCharCode(c.charCodeAt(0)^k.charCodeAt(i%k.length))).join('')));
 }
+    //?
   </script>
   
 </html>
