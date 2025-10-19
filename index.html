@@ -2,8 +2,12 @@
 index
   <script>
 let secret = "-1";
-const enc = (t,k)=>btoa([...unescape(encodeURIComponent(t))].map((c,i)=>String.fromCharCode(c.charCodeAt(0)^k.charCodeAt(i%k.length))).join(''));
-const dec = (s,k)=>decodeURIComponent(escape([...atob(s)].map((c,i)=>String.fromCharCode(c.charCodeAt(0)^k.charCodeAt(i%k.length))).join('')));
+function encode(t,k = secret){
+  return btoa([...unescape(encodeURIComponent(t))].map((c,i)=>String.fromCharCode(c.charCodeAt(0)^k.charCodeAt(i%k.length))).join(''));
+}
+function decode(s,k = secret) {
+  return decodeURIComponent(escape([...atob(s)].map((c,i)=>String.fromCharCode(c.charCodeAt(0)^k.charCodeAt(i%k.length))).join('')));
+}
   </script>
   
 </html>
